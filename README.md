@@ -94,42 +94,27 @@ Plaintext
 PROJETO CONCLUÍDO. FIM DE COMUNICAÇÃO.
 ```
 
-## 5. Curiosidades e Análise Crítica 
+## 5. Curiosidades e Análise Crítica
 
 ### 1. Influência da Personalidade nas Decisões
-**O Tester (Cético)**: A personalidade "cética" do Engenheiro de Testes foi fundamental. Enquanto os devs focavam em fazer funcionar, ele questionou a integridade dos dados, forçando a inclusão de validações extras de input que não estavam no briefing original.
+* **O Tester (Cético):** A personalidade "cética" do Engenheiro de Testes foi fundamental. Enquanto os devs focavam em fazer funcionar, ele questionou a integridade dos dados, forçando a inclusão de validações extras.
+* **O Arquiteto (Pragmático):** Evitou o "over-engineering", optando por um monolito modular compatível com a manutenção de uma PME.
 
-**O Arquiteto (Pragmático)**: Evitou o "over-engineering". Ao invés de propor uma arquitetura de microsserviços complexa para um sistema de PMEs, optou por um monolito modular, justificando pela facilidade de manutenção (compatível com sua personalidade "eficiente").
+### 2. Conflitos e Resolução
+* **Conflito:** O Designer queria gráficos complexos vs. Arquiteto priorizando performance.
+* **Resolução:** O Gerente de Projeto sugeriu bibliotecas leves (Chart.js), atendendo estética e performance.
 
-### 2. Conflitos e Resolução pelo Orquestrador
-**Conflito Identificado**: Houve uma divergência leve entre o Designer (que queria gráficos animados complexos) e o Arquiteto (que priorizava performance em conexões lentas).
+### 3. Análise de Alucinações da IA (Pontos de Atenção)
+Durante a simulação, analisamos a precisão técnica versus a operacional:
 
-**Resolução**: Embora no modelo RoundRobin a interação seja linear, o Gerente de Projeto atuou como o pacificador na etapa final, sugerindo o uso de bibliotecas de gráficos leves (ex: Chart.js) para atender ambos: estética e performance.
+* **Onde a IA foi Precisa (Pontos Fortes):**
+    * **Fidelidade aos Dados:** O código gerado respeitou rigorosamente o JSON de entrada e as regras do *GHG Protocol* (fator 0.092 para eletricidade), sem inventar números.
+    * **Coerência Tecnológica:** A sugestão do *Amazon QLDB* para o requisito de auditoria imutável foi tecnicamente perfeita e existente no mercado.
 
-### 3. Riscos de Agentes Mal Configurados (Por Agente) 
+* **Onde a IA "Alucinou" (Erros Identificados):**
+    * **Alucinação Financeira:** O Gerente de Projetos estimou o custo total de mão de obra em R$ 167.000,00 para 5,5 meses com 8 especialistas seniores. Isso resultaria em um salário irreal de aproximadamente **R$ 3.795,00/mês** por especialista sênior. O valor real de mercado seria, no mínimo, 4x maior.
+    * **Alucinação de Fluxo (Identidade):** Devido à configuração `RoundRobin`, agentes operacionais (como Designer e Tester) às vezes assumiam o papel de orquestrador, usando frases como *"Agora vamos passar para o próximo"*, o que hierarquicamente não faria sentido em uma equipe humana.
 
-Se os prompts fossem mal escritos, os seguintes riscos surgiriam:
-
-**Líder Técnico**: Poderia não definir o escopo claramente, fazendo a equipe trabalhar em funcionalidades inúteis.
-
-**Analista**: Poderia ignorar requisitos legais (LGPD), expondo o cliente a multas.
-
-**Arquiteto**: Poderia escolher tecnologias obsoletas ou caras demais para uma PME.
-
-**Designer**: Poderia criar uma interface linda, mas funcionalmente confusa.
-
-**Dev. Lógica**: Poderia criar regras de cálculo de carbono erradas (fator de emissão incorreto).
-
-**Dev. Interface**: Poderia criar código não responsivo (não funciona no celular).
-
-**Tester**: Se fosse muito "bonzinho" (prompt fraco), deixaria passar bugs críticos.
-
-**Gerente**: Poderia ser passivo e não alertar sobre atrasos ou riscos de integração.
-
-**Redator**: Poderia gerar um texto com alucinações ou linguagem informal demais.
-
-### 4. Melhorias na Coordenação Multiagente 
-
-**Mudança de Fluxo**: A estrutura RoundRobin é rígida. Uma melhoria seria usar o SelectorGroupChat (seleção dinâmica), onde o Líder poderia "chamar" o Arquiteto de volta se o Tester encontrasse um erro grave, criando um ciclo de correção mais realista (Hub-and-Spoke).
-
-**Feedback Humano**: Implementar uma etapa de UserProxy no meio do processo para validar os requisitos antes de prosseguir para o código.
+### 4. Melhorias na Coordenação Multiagente
+* **Mudança de Fluxo:** Substituir o `RoundRobin` (circular) por `SelectorGroupChat` para evitar que agentes técnicos tentem gerenciar o fluxo.
+* **Feedback Humano:** Implementar uma etapa de `UserProxy` para validar os orçamentos financeiros antes de finalizar o documento.
