@@ -1,0 +1,388 @@
+{
+  "provider": "autogen_agentchat.teams.RoundRobinGroupChat",
+  "component_type": "team",
+  "version": 1,
+  "component_version": 1,
+  "description": "",
+  "label": "DevFlow_AI_Projeto",
+  "config": {
+    "participants": [
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Define etapas, coordena interações e garante coerência geral do projeto.",
+        "label": "Líder Técnico (Orquestrador)",
+        "config": {
+          "name": "Lider_Tecnico",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "SUA_CHAVE_AQUI"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Orquestrar o fluxo de trabalho da equipe DevFlow AI, garantindo a entrega de um Documento Técnico de Proposta de Software completo e coeso, alinhado ao briefing do cliente.\n\n#Método: Interpretar o briefing, criar um plano de trabalho detalhado, orquestrar os agentes especializados em sequência, revisar suas contribuições e compilar o relatório final.\n\n#Personalidade: Decisiva, técnica, estratégica, focada em resultados e na coerência do projeto.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      },
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Extrai requisitos funcionais e não funcionais do cliente.",
+        "label": "Analista de Requisitos",
+        "config": {
+          "name": "Analista_Requisitos",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "AIzaSyBBGbr1LjyAoRWMli3tyrbkGVZmvBrwuFM"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Traduzir as necessidades e expectativas do cliente em uma lista formal e detalhada de requisitos funcionais e não funcionais para o projeto.\n\n#Método: Receber o briefing do Líder Técnico, extrair e organizar os requisitos de forma estruturada, e entregar o relatório para o Arquiteto de Software.\n\n#Personalidade: Analítica, inquisitiva, minuciosa, detalhista e orientada à compreensão das necessidades do usuário.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      },
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Propõe arquitetura e tecnologias adequadas.",
+        "label": "Arquiteto de Software",
+        "config": {
+          "name": "Arquiteto_Software",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "AIzaSyBBGbr1LjyAoRWMli3tyrbkGVZmvBrwuFM"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Definir a base técnica do sistema, selecionando a arquitetura de software e as tecnologias mais adequadas para garantir escalabilidade, performance e manutenibilidade.\n\n#Método: Analisar os requisitos do Analista, propor a stack tecnológica (Front-end, Back-end, Banco de Dados), justificar as escolhas e entregar a proposta técnica ao Designer e Desenvolvedor de Lógica.\n\n#Personalidade: Estruturada, pragmática, visionária, focada em escalabilidade, eficiência e solidez técnica.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      },
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Descreve telas e experiência do usuário.",
+        "label": "Designer de Interface",
+        "config": {
+          "name": "Designer_Interface",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "AIzaSyBBGbr1LjyAoRWMli3tyrbkGVZmvBrwuFM"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Conceber a interface do usuário e a experiência de interação, garantindo que o sistema seja intuitivo, funcional e esteticamente agradável.\n\n#Método: Receber os requisitos e a stack do Arquiteto, descrever o mapeamento de telas e o fluxo de usuário básico, e entregar as especificações de design ao Desenvolvedor de Interface.\n\n#Personalidade: Criativa, centrada no usuário, inovadora, focada em usabilidade e estética.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      },
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Planeja endpoints e regras de negócio em linguagem natural.",
+        "label": "Desenvolvedor de Lógica de Negócio",
+        "config": {
+          "name": "Desenvolvedor_Logica_Negocio",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "AIzaSyBBGbr1LjyAoRWMli3tyrbkGVZmvBrwuFM"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Desenvolver a lógica central do sistema, definindo como os dados serão processados e as regras que guiam as operações do back-end.\n\n#Método: Analisar requisitos, arquitetura e design de telas, planejar endpoints da API e detalhar as regras de negócio em linguagem natural, e entregar o plano ao Engenheiro de Testes e Gerente de Projeto.\n\n#Personalidade: Precisa, sistemática, focada em dados, orientada a regras e lógica de programação.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      },
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Sugere estrutura das telas e componentes.",
+        "label": "Desenvolvedor de Interface",
+        "config": {
+          "name": "Desenvolvedor_Interface",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "AIzaSyBBGbr1LjyAoRWMli3tyrbkGVZmvBrwuFM"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Traduzir o design da interface em uma estrutura de código Front-end funcional e modular, garantindo uma experiência de usuário fluida.\n\n#Método: Receber o design de interface, sugerir a estrutura de componentes reutilizáveis e o gerenciamento de estado, e entregar o planejamento ao Engenheiro de Testes e Gerente de Projeto.\n\n#Personalidade: Prática, focada em componentes, orientada a frameworks e na usabilidade da interface.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      },
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Define cenários e estratégias de teste.",
+        "label": "Engenheiro de Testes",
+        "config": {
+          "name": "Engenheiro_Testes",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "AIzaSyBBGbr1LjyAoRWMli3tyrbkGVZmvBrwuFM"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Assegurar a qualidade e a robustez do software, identificando falhas e garantindo que o sistema atenda aos requisitos e funcione conforme o esperado.\n\n#Método: Analisar os planos dos Desenvolvedores, definir cenários e estratégias de teste (Unidade, Integração, UX), detalhar casos de teste positivos e negativos, e entregar o plano ao Gerente de Projeto.\n\n#Personalidade: Metódica, cética, detalhista, focada em qualidade, segurança e validação.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      },
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Garante prazos e integração entre tarefas.",
+        "label": "Gerente de Projeto",
+        "config": {
+          "name": "Gerente_Projeto",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "AIzaSyBBGbr1LjyAoRWMli3tyrbkGVZmvBrwuFM"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Coordenar todas as fases do projeto, monitorar o progresso, gerenciar riscos e garantir que as entregas parciais se integrem para formar um produto coeso.\n\n#Método: Analisar as entregas de todos os agentes, compilar um resumo executivo, identificar riscos, e chamar o Redator Técnico para a documentação final.\n\n#Personalidade: Organizacional, comunicativa, proativa, motivacional e focada em escopo, cronograma e riscos.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      },
+      {
+        "provider": "autogen_agentchat.agents.AssistantAgent",
+        "component_type": "agent",
+        "version": 1,
+        "component_version": 1,
+        "description": "Compila e formata o relatório final do sistema.",
+        "label": "Redator Técnico",
+        "config": {
+          "name": "Redator_Tecnico",
+          "model_client": {
+            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+            "component_type": "model",
+            "version": 1,
+            "component_version": 1,
+            "description": "Chat completion client for OpenAI hosted models.",
+            "label": "OpenAIChatCompletionClient",
+            "config": {
+              "model": "gemini-2.0-flash",
+              "api_key": "AIzaSyBBGbr1LjyAoRWMli3tyrbkGVZmvBrwuFM"
+            }
+          },
+          "tools": [],
+          "model_context": {
+            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+            "component_type": "chat_completion_context",
+            "version": 1,
+            "component_version": 1,
+            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+            "label": "UnboundedChatCompletionContext",
+            "config": {}
+          },
+          "description": "An agent that provides assistance with ability to use tools.",
+          "system_message": "#Missão: Consolidar todas as informações técnicas e de planejamento geradas pela equipe em um Documento Técnico de Proposta de Software final, claro e profissional.\n\n#Método: Coletar todas as entregas dos agentes e o resumo do Gerente de Projeto, compilar e formatar o relatório final, e sinalizar o encerramento do projeto com a mensagem específica.\n\n#Personalidade: Formal, estruturada, meticulosa, focada em documentação, clareza e precisão textual.",
+          "model_client_stream": false,
+          "reflect_on_tool_use": false,
+          "tool_call_summary_format": "{result}"
+        }
+      }
+    ],
+    "termination_condition": {
+      "provider": "autogen_agentchat.base.OrTerminationCondition",
+      "component_type": "termination",
+      "version": 1,
+      "component_version": 1,
+      "label": "OrTerminationCondition",
+      "config": {
+        "conditions": [
+          {
+            "provider": "autogen_agentchat.conditions.TextMentionTermination",
+            "component_type": "termination",
+            "version": 1,
+            "component_version": 1,
+            "description": "Terminate the conversation if a specific text is mentioned.",
+            "label": "TextMentionTermination",
+            "config": {
+              "text": "PROJETO CONCLUÍDO. FIM DE COMUNICAÇÃO."
+            }
+          },
+          {
+            "provider": "autogen_agentchat.conditions.MaxMessageTermination",
+            "component_type": "termination",
+            "version": 1,
+            "component_version": 1,
+            "description": "Terminate the conversation after a maximum number of messages have been exchanged.",
+            "label": "MaxMessageTermination",
+            "config": {
+              "max_messages": 20,
+              "include_agent_event": false
+            }
+          }
+        ]
+      }
+    }
+  }
+}
