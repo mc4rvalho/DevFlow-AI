@@ -25,7 +25,8 @@ Para garantir decisões técnicas realistas, foram fornecidos ao **Líder Técni
 
 ### Artefato B: Contexto de Dados (JSON)
 Foi fornecido um exemplo da estrutura de dados que o sistema deve processar:
-```json
+```
+json
 {
   "cliente_id": "PME-4921",
   "entradas": [
@@ -75,7 +76,8 @@ O sistema operou em fluxo circular (RoundRobin), onde o orquestrador (Líder) in
 
 (Trecho simulado do log de execução do terminal)
 
-```Plaintext
+```
+Plaintext
 
 [Lider_Tecnico]: Iniciando análise do projeto EcoTrack... Plano de ação gerado.
 --------------------------------------------------------------------------------
