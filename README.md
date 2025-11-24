@@ -75,7 +75,7 @@ O sistema operou em fluxo circular (RoundRobin), onde o orquestrador (Líder) in
 
 (Trecho simulado do log de execução do terminal)
 
-Plaintext
+```Plaintext
 
 [Lider_Tecnico]: Iniciando análise do projeto EcoTrack... Plano de ação gerado.
 --------------------------------------------------------------------------------
@@ -88,7 +88,9 @@ Plaintext
 ... (interações dos devs) ...
 --------------------------------------------------------------------------------
 [Redator_Tecnico]: DOCUMENTO TÉCNICO COMPILADO.
+--------------------------------------------------------------------------------
 PROJETO CONCLUÍDO. FIM DE COMUNICAÇÃO.
+```
 
 ## 5. Curiosidades e Análise Crítica 
 
