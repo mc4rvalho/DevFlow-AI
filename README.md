@@ -114,7 +114,27 @@ Durante a simulação, analisamos a precisão técnica versus a operacional:
 * **Onde a IA "Alucinou" (Erros Identificados):**
     * **Alucinação Financeira:** O Gerente de Projetos estimou o custo total de mão de obra em R$ 167.000,00 para 5,5 meses com 8 especialistas seniores. Isso resultaria em um salário irreal de aproximadamente **R$ 3.795,00/mês** por especialista sênior. O valor real de mercado seria, no mínimo, 4x maior.
     * **Alucinação de Fluxo (Identidade):** Devido à configuração `RoundRobin`, agentes operacionais (como Designer e Tester) às vezes assumiam o papel de orquestrador, usando frases como *"Agora vamos passar para o próximo"*, o que hierarquicamente não faria sentido em uma equipe humana.
+ 
+### 4. Análise de Riscos de Engenharia de Prompt (Hipóteses de Falha)
+Além dos erros observados, foi realizado uma análise hipotética sobre os riscos críticos caso a "persona" dos agentes fosse mal configurada:
 
-### 4. Melhorias na Coordenação Multiagente
+  * **Líder Técnico (Risco: Loop Infinito)**: Se configurado sem poder de decisão final, a equipe entraria em debates cíclicos sem avançar.
+
+  * **Engenheiro de Testes (Risco: Bugs em Produção)**: Se não fosse explicitamente "Cético", poderia aprovar códigos com falhas de cálculo (Falsos Positivos).
+
+  * **Arquiteto de Software (Risco: Over-Engineering)**: Se focado em "novidades" e não em pragmatismo, criaria uma infraestrutura cara e complexa desnecessariamente.
+
+  * **Analista de Requisitos (Risco: Falha Legal)**: Se omitisse segurança, o sistema violaria a LGPD ao expor dados sensíveis.
+
+### 5. Melhorias na Coordenação Multiagente
 * **Mudança de Fluxo:** Substituir o `RoundRobin` (circular) por `SelectorGroupChat` para evitar que agentes técnicos tentem gerenciar o fluxo.
 * **Feedback Humano:** Implementar uma etapa de `UserProxy` para validar os orçamentos financeiros antes de finalizar o documento.
+
+## 6. Apêndice: Configuração Técnica (Código Fonte)
+Para fins de auditoria acadêmica, reprodutibilidade técnica e verificação da robustez dos System Prompts descritos na seção 5.4, o arquivo de configuração completo (`team-config.json`) não foi transcrito neste documento devido à sua extensão.
+
+O código-fonte original, contendo a orquestração exata dos agentes e suas instruções de sistema, encontra-se disponível publicamente no repositório oficial do projeto:
+
+Localização do Arquivo: `/team-config.json`
+
+Acesso ao Repositório: https://github.com/mc4rvalho/DevFlow-AI
